@@ -8,14 +8,7 @@
 </head>
 
 <body>
-    <ul>
-        <li>prueba</li>
-        <ul>
-            <li>yeee</li>
-            <li>yeee2</li>
-        </ul>
-    </ul>
-
+<h1>Ikasleak: </h1>
     <?php
 
     $ikasleak = array(
@@ -24,7 +17,17 @@
         "Mikel" => array("abizena" => "Olarrieta Andion", "Adina" => 20, "Zikloa" => "DW3")
     );
 
-    
+    foreach ($ikasleak as $ikaslea => $ikasleDatuak) {
+        echo "<ul>";
+        echo "<li>Ikaslearen izena: " . $ikaslea . "</li>";
+        echo "<ul>";
+        foreach ($ikasleDatuak as $item => $ikasleDatu) {
+            echo "<li>" . $item . ": " . $ikasleDatu . "</li>";
+        }
+        echo "</ul>";
+
+        echo "</ul>";
+    }
 
     ?>
 </body>
