@@ -21,8 +21,7 @@
 
     $bisitatuak_guztiak = array_merge($bisitatuak_2022, $bisitatuak_2023);
 
-    //print_r($bisitatuak_guztiak);
-
+    //Hau komparatzen ditu array-ak eta bikoiztutak kentzen ditu.
     $desio_zerrendaClean = array_diff($desio_zerrenda, $bisitatuak_guztiak);
 
     sort($desio_zerrendaClean);
