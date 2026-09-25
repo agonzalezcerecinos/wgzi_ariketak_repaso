@@ -13,6 +13,7 @@
     <?php
 
     if (!isset($_POST["Bidali"])) {
+
         echo '
                 <form action="ariketa3.php" method="post" name="formLogin">
 
@@ -25,16 +26,17 @@
                     <input type="submit" value="Bidali" name="Bidali">
                 </form>
             ';
+    } else {
 
-            $erabiltzailea = "";
-            $pasahitza = "";
+        $erabiltzailea = $_POST['erabiltzaileLogin'];
+        $pasahitza = $_POST['pasahitzaLogin'];
 
-            if(!empty()){
+        if (!empty($erabiltzailea) && !empty($pasahitza)) {
 
-            }
-            
-    }else{
-        echo 'Errorea: Erabiltzailea eta pasahitza datuak sartu behar dira. <br><br> <a href="ariketa3.php">Itzuli formularioa betezera</a>';
+            echo "Kaixo $erabiltzailea!, Ongi etorri!";
+        } else {
+            echo 'Errorea: Erabiltzailea eta pasahitza datuak sartu behar dira. <br><br> <a href="ariketa3.php">Itzuli formularioa betezera</a>';
+        }
     }
 
     ?>
