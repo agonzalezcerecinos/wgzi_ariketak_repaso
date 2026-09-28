@@ -50,14 +50,14 @@ if (!empty($_POST["gehitu"])) {
     echo $egoera . $generoa;
 
     $seriesGehitu = [
-        [
+        
             "izenburua" => $izenburua,
             "generoa" => $generoa,
             "denboraldiak" => $denboraldi,
             "balorazioa" => $balorazioa,
             "amaituta" => $egoeraBoolean,
             "irudia" => "img/default.jpg"
-        ]
+        
     ];
 
 
