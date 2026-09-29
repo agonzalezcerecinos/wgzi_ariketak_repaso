@@ -1,5 +1,6 @@
 
 <?php
+session_start(); 
 
 include 'pages/header.php';
 require 'functions/funtzioak.php';
@@ -29,8 +30,6 @@ if (!empty($_POST["serieBilatu"])) {
         }
     }
 
-
-
     if ($serieBilatuta != null) {
         echo '<article class="seriea">';
         echo '<img src="' . $serieBilatuta["irudia"] . '" alt="' . $serieBilatuta["izenburua"] . '">';
@@ -48,20 +47,12 @@ if (!empty($_POST["serieBilatu"])) {
 
         echo '</div>';
         echo '</article>';
-
-    } else {
-        echo '<p> Ez da seriea aurkitu </p>';
     }
 } else {
-    echo '<p> Ez duzu ipini ezer </p>';
+    echo '<p> Ez da seriea aurkitu </p>';
 }
 
-
-
-
-
 include 'pages/footer.php';
-
 
 ?>
 

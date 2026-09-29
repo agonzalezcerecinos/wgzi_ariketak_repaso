@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include 'pages/header.php';
 require 'functions/funtzioak.php';

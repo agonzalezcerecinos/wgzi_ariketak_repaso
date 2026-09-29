@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <?php include 'pages/header.php'; ?>
 <?php require 'functions/funtzioak.php'; ?>
 <?php require 'data/datuak.php'; ?>
@@ -8,10 +10,7 @@
     <h1>Tx_Series</h1>
 
     <section class="serieak">
-
         <?php
-
-
         foreach ($series as $serie => $serieDatuak) {
             echo '<article class="seriea">';
             echo '<img src="' . $series[$serie]["irudia"] . '" alt="' . $series[$serie]["izenburua"] . '">';
@@ -30,13 +29,8 @@
             echo '</div>';
             echo '</article>';
         }
-
-
-
         ?>
-
     </section>
-
 </main>
 
 <?php include 'pages/footer.php'; ?>
