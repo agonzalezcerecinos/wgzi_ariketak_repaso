@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-color: rgba(179, 179, 179, 0.295);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    display: flex;
+    flex: 1;
+}
+
+/* ######################## header.php ######################## */
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.headerKontainer {
+    display: flex;
+    color: white;
+    background-color: orange;
+    min-width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.headerKontainer h1 {
+    margin-top: 20px;
+    padding: 1%;
+    font-size: 50px;
+}
+
+.headerKontainer p {
+    margin-bottom: 40px;
+}
+
+.nabigazioa {
+    display: flex;
+    min-width: 100%;
+    justify-content: center;
+    background-color: rgba(161, 160, 160, 0.288);
+}
+
+.nabigazioa ul {
+    display: flex;
+    min-width: 50%;
+    align-items: center;
+    list-style: none;
+    justify-content: space-between;
+
+}
+
+.nabigazioa li {
+    background-color: white;
+    padding: 1%;
+    margin: 2px;
+
+}
+
+.nabigazioa a {
+    text-decoration: none;
+    color: black;
+}
+
+/* ######################## footer.php ######################## */
+
+footer {
+    display: flex;
+    background-color: orange;
+    min-width: 100%;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+footer h5 {
+    font-size: 15px;
+    padding: 1%;
+}
+
+footer p {
+    font-size: 15px;
+    padding: 1%;
+}
+
+/* ######################## index.php ######################## */
+
+.formSection {
+    display: flex;
+    min-width: 100%;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.formSection article {
+    margin: auto;
+    background-color: white;
+    min-width: 25%;
+    border-radius: 5px;
+}
+
+.formSection h1 {
+    color: orange;
+    text-align: center;
+    margin: 30px;
+}
+
+.formSection form {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 40px;
+}
+
+#loginForm input {
+    border-color: orange;
+    height: 30px;
+}
+
+#loginForm #botoia {
+    margin: 30px 0px;
+    align-self: center;
+    background-color: orange;
+    color: white;
+    height: 30px;
+    width: 80px;
+}
+
+.errorForm {
+    margin-bottom: 20px;
+    text-align: center;
+    color: red;
+}
+
+.hasieraSection {
+    display: flex;
+    min-width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hasieraSection article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100%;
+}
+
+.hasieraSection article:last-child {
+    background-color: white;
+}

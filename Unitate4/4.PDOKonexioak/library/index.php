@@ -2,52 +2,86 @@
 
 session_start();
 
-if (isset($_SESSION['erabiltzailea'])) {
-    header("Location: pages/inicio.php");
-    exit;
-}
 
 $error = "";
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
-    $erabiltzailea = trim($_POST['sessionErabiltzailea'] ?? "");
-    $pasahitza = trim($_POST['sessionPasahitza'] ?? "");
-
-    if ($erabiltzailea === "" || $pasahitza === "") {
-        $error = "Ezin da ezer hutsik utzi.";
-    } elseif ($erabiltzailea === "alex" && $pasahitza === "1234") {
-
-        $_SESSION['erabiltzailea'] = htmlspecialchars($erabiltzailea);
-
-        header("Location: index.php");
-        exit;
-
-    } else {
-        $error = "Erabiltzailea edo pasahitza txarto daude.";
-    }
-}
-
 include('includes/header.php');
 
+if (isset($_SESSION['erabiltzailea'])) {
+
+
 ?>
+    <main>
+        <section class="hasieraSection">
+            <article class="">
+                <h1>Ongi etorri liburutegira!</h1>
+                <p>Aukera ezazu egin nahi duzuna:</p>
+                <button>Liburu berria sortu</button>
+                <button>Liburuen kontsulta</button>
+                <button>Bilatzailea</button>
+            </article>
 
-<h1>LOGEATU</h1>
+            <article>
+                <h5>Sistema informazioa</h5>
+                <p>Sistema honek liburuak kudeatzeko aukera ematen du:</p>
+                <ul>
+                    <li>Liburu berriak gehitu</li>
+                    <li>Dauden liburuak kontsultatu</li>
+                    <li>Liburuak datuak aldatu</li>
+                    <li>Liburuak ezabatu</li>
+                    <li>Bilaketa aurretatua egin</li>
+                </ul>
+            </article>
 
-<form action="index.php" method="post">
+        </section>
+    </main>
 
-    <label for="sessionErabiltzailea">Erabiltzailea:</label>
-    <input type="text" name="sessionErabiltzailea" id="sessionErabiltzailea">
 
-    <label for="sessionPasahitza">Pasahitza:</label>
-    <input type="password" name="sessionPasahitza" id="sessionPasahitza">
+<?php } else { ?>
+    <main>
+        <section class="formSection">
+            <article>
+                <h1>LOGEATU</h1>
+                <form action="index.php" method="post" id="loginForm">
+                    <label for="sessionErabiltzailea">Erabiltzailea:</label>
+                    <input type="text" name="sessionErabiltzailea" id="sessionErabiltzailea">
+                    <label for="sessionPasahitza">Pasahitza:</label>
+                    <input type="password" name="sessionPasahitza" id="sessionPasahitza">
+                    <input type="submit" value="Sartu" name="gehitu" id="botoia">
+                </form>
 
-    <input type="submit" value="Sartu" name="gehitu">
 
-</form>
 
-<?php if ($error !== ""): ?>
-    <p><?= $error ?></p>
-<?php endif; ?>
+            <?php
+            if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-<?php include('includes/footer.php'); ?>
+                $erabiltzailea = trim($_POST['sessionErabiltzailea'] ?? "");
+                $pasahitza = trim($_POST['sessionPasahitza'] ?? "");
+
+                if ($erabiltzailea === "" || $pasahitza === "") {
+                    $error = "Ezin da ezer hutsik utzi.";
+                } elseif ($erabiltzailea === "alex" && $pasahitza === "1234") {
+
+                    $_SESSION['erabiltzailea'] = htmlspecialchars($erabiltzailea);
+
+                    header("Location: index.php");
+                    exit;
+                } else {
+                    $error = "Erabiltzailea edo pasahitza txarto daude.";
+                }
+            }
+        }
+
+        if ($error !== "") {
+            echo '<p class="errorForm">' . $error . '</p>';
+        }
+
+            ?>
+
+            </article>
+        </section>
+
+    </main>
+
+    <?php
+    include('includes/footer.php');
+    ?>

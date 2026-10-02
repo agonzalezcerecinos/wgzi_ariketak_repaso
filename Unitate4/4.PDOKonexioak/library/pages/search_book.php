@@ -1,5 +1,5 @@
 <?php 
-include('../includes/header.php');
+include __DIR__ . '/../includes/header.php';
 ?>
 
 <p>search_book is runnig</p>
