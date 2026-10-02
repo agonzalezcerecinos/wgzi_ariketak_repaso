@@ -2,9 +2,38 @@
 
 session_start();
 
+// connection.php inportatu require_once erabiliz
+require_once __DIR__ . "/DAO/connection.php";
+require_once __DIR__ . "/DAO/loginDAO.php";
+
+
+$dbName = 'db_liburutegia';
+$pdo = connectDB($dbName);
+
+
+
 
 $error = "";
 include('includes/header.php');
+
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    $erabiltzailea = trim($_POST['sessionErabiltzailea'] ?? "");
+    $pasahitza = trim($_POST['sessionPasahitza'] ?? "");
+
+    if ($erabiltzailea === "" || $pasahitza === "") {
+        $error = "Ezin da ezer hutsik utzi.";
+    } elseif (loginUser($pdo, $erabiltzailea, $pasahitza)) {
+
+        $_SESSION['erabiltzailea'] = htmlspecialchars($erabiltzailea);
+
+        header("Location: index.php");
+        exit;
+    } else {
+        $error = "Erabiltzailea edo pasahitza txarto daude.";
+    }
+}
 
 if (isset($_SESSION['erabiltzailea'])) {
 
@@ -48,27 +77,7 @@ if (isset($_SESSION['erabiltzailea'])) {
                     <input type="password" name="sessionPasahitza" id="sessionPasahitza">
                     <input type="submit" value="Sartu" name="gehitu" id="botoia">
                 </form>
-
-
-
             <?php
-            if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
-                $erabiltzailea = trim($_POST['sessionErabiltzailea'] ?? "");
-                $pasahitza = trim($_POST['sessionPasahitza'] ?? "");
-
-                if ($erabiltzailea === "" || $pasahitza === "") {
-                    $error = "Ezin da ezer hutsik utzi.";
-                } elseif ($erabiltzailea === "alex" && $pasahitza === "1234") {
-
-                    $_SESSION['erabiltzailea'] = htmlspecialchars($erabiltzailea);
-
-                    header("Location: index.php");
-                    exit;
-                } else {
-                    $error = "Erabiltzailea edo pasahitza txarto daude.";
-                }
-            }
         }
 
         if ($error !== "") {
