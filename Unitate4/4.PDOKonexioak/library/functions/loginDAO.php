@@ -1,7 +1,7 @@
 <?php
 
 
-function loginUser($pdo, $username, $password)
+function loginUser(PDO $pdo, string $username, string $password)
 {
     $sql = "SELECT * FROM erabiltzaileak 
             WHERE erabiltzaile_izena = :user 

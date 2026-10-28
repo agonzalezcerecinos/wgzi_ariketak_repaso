@@ -6,8 +6,10 @@
  * @param string $dbName Datu-basearen izena konektatzeko.
  * @return PDO PDO objektua datu-base konexioarekin.
  */
-function connectDB(string $dbName): PDO {
-    
+function connectDB(): PDO
+{
+
+    $dbName = 'db_liburutegiak';
     $host = '127.0.0.1';
     $user = 'root';
     $password = 'root';  // MAMP erabiltzen dugunean password-a jarri behar da. XAMPP erabiltzean ez.
@@ -26,7 +28,3 @@ function connectDB(string $dbName): PDO {
         die("Errorea datu-basearekin konektatzerakoan: " . $e->getMessage());
     }
 }
-
-
-
-?>

@@ -3,13 +3,13 @@
 session_start();
 
 // connection.php inportatu require_once erabiliz
-require_once __DIR__ . "/DAO/connection.php";
-require_once __DIR__ . "/DAO/loginDAO.php";
+require_once __DIR__ . "/functions/connection.php";
+require_once __DIR__ . "/functions/loginDAO.php";
 
-// 
+//
 // $dbName = 'db_liburutegia';
-$dbName = 'db_liburutegiak';
-$pdo = connectDB($dbName);
+
+$pdo = connectDB();
 
 
 
@@ -42,15 +42,17 @@ if (isset($_SESSION['erabiltzailea'])) {
 ?>
     <main>
         <section class="hasieraSection">
-            <article class="">
+            <article class="welcomeCard">
                 <h1>Ongi etorri liburutegira!</h1>
                 <p>Aukera ezazu egin nahi duzuna:</p>
-                <button>Liburu berria sortu</button>
-                <button>Liburuen kontsulta</button>
-                <button>Bilatzailea</button>
+                <div class="homeActions">
+                    <a href="pages/add_book.php">Liburu berria sortu</a>
+                    <a href="pages/view_book.php">Liburuen kontsulta</a>
+                    <a href="pages/search_book.php">Bilatzailea</a>
+                </div>
             </article>
 
-            <article>
+            <article class="systemInfo">
                 <h5>Sistema informazioa</h5>
                 <p>Sistema honek liburuak kudeatzeko aukera ematen du:</p>
                 <ul>

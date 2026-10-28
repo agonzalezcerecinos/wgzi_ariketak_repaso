@@ -1,0 +1,57 @@
+.deletePage {
+    display: grid;
+    place-items: center;
+}
+
+.deleteCard {
+    width: min(100%, 620px);
+    padding: clamp(24px, 5vw, 40px);
+    border: 1px solid #f1d6d3;
+    border-radius: 16px;
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+}
+
+.deleteCard h1 {
+    margin: 0 0 20px;
+    color: var(--color-danger);
+    font-size: clamp(1.5rem, 3vw, 1.9rem);
+    letter-spacing: -0.035em;
+}
+
+.deleteWarning {
+    margin: 0 0 20px;
+    padding: 14px 16px;
+    border-left: 4px solid #d92d20;
+    border-radius: 6px;
+    color: #912018;
+    background: #fef3f2;
+}
+
+.deleteWarning p,
+.bookDetails p {
+    margin: 0;
+}
+
+.bookDetails {
+    display: grid;
+    gap: 12px;
+    padding: 18px;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    background: #f8faf8;
+}
+
+.bookDetails strong {
+    color: var(--color-muted);
+}
+
+.deleteCard .formButtons #botoia {
+    border-color: var(--color-danger);
+    background: var(--color-danger);
+}
+
+.deleteCard .formButtons #botoia:hover {
+    border-color: #912018;
+    background: #912018;
+}
