@@ -1,14 +1,27 @@
 <?php
+
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+use Dom\Document;
+
 include __DIR__ . '/../includes/header.php';
 require_once __DIR__ . "/../config/config.php";
 
 // connection.php inportatu require_once erabiliz
-require_once __DIR__ . "/DAO/connection.php";
-require_once __DIR__ . "/DAO/liburuDao.php";
+require_once __DIR__ . "/../DAO/connection.php";
+require_once __DIR__ . "/../DAO/liburuDao.php";
 
 
-$dbName = 'db_liburutegia';
+
+// $dbName = 'db_liburutegia';
+$dbName = 'db_liburutegiak';
 $pdo = connectDB($dbName);
+
+
+
 
 if (!isset($_SESSION['erabiltzailea'])) {
     header("Location: " . BASE_URL . "index.php");
@@ -21,28 +34,40 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $egilea = trim($_POST['addEgilea'] ?? "");
     $eskuragarri = isset($_POST['eskuragarri']) ? (int)$_POST['eskuragarri'] : 0;
 
-    new Liburu($izenburua, $egilea, $eskuragarri);
-
     if ($izenburua === "" || $egilea === "") {
         $error = "Ezin da ezer hutsik utzi.";
-    } elseif (insertLiburu($pdo, $erabiltzailea, $pasahitza)) {
-
-        $_SESSION['erabiltzailea'] = htmlspecialchars($erabiltzailea);
-
-        header("Location: index.php");
-        exit;
     } else {
-        $error = "Erabiltzailea edo pasahitza txarto daude.";
+        insertLiburu($pdo, $izenburua, $egilea, $eskuragarri);
+         echo '<script>alert("Liburu hau: ' . $izenburua . ' gehitu da");</script>';
+
+        // try {
+
+        //     insertLiburu($pdo, $izenburua, $egilea, $eskuragarri);
+
+        // } catch (PDOException $e) {
+
+        //     echo "<h2>ERROR SQL:</h2>";
+        //     echo "<pre>";
+        //     echo $e->getMessage();
+        //     echo "</pre>";
+        // } catch (Exception $e) {
+
+        //     echo "<h2>ERROR:</h2>";
+        //     echo "<pre>";
+        //     echo $e->getMessage();
+        //     echo "</pre>";
+        // }
     }
 }
 
 ?>
 
+
 <main>
     <section class="formSection">
         <article>
             <h1>Liburu Berria Sortu</h1>
-            <form action="index.php" method="post" id="loginForm">
+            <form action="add_book.php" method="post" id="loginForm">
 
                 <label for="addIzenburua">Izenburua (4-50 karaktere):</label>
                 <input type="text" name="addIzenburua" id="addIzenburua">
@@ -59,18 +84,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <label for="eskuragarriEz">Ez</label>
 
                 </label>
-
-
-                <input type="submit" value="Bidali" name="gehitu" id="botoia">
+                <div class="formButtons">
+                    <input type="submit" value="Bidali" name="gehitu" id="botoia">
+                    <button type="button" id="botoia2" onclick="window.location.href='../index.php'">Atzera</button>
+                </div>
 
             </form>
-            <?php
-
-            // if ($error !== "") {
-            //     echo '<p class="errorForm">' . $error . '</p>';
-            // }
-
-            ?>
 
         </article>
     </section>

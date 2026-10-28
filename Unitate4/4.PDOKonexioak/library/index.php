@@ -6,8 +6,9 @@ session_start();
 require_once __DIR__ . "/DAO/connection.php";
 require_once __DIR__ . "/DAO/loginDAO.php";
 
-
-$dbName = 'db_liburutegia';
+// 
+// $dbName = 'db_liburutegia';
+$dbName = 'db_liburutegiak';
 $pdo = connectDB($dbName);
 
 

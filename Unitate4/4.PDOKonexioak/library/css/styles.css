@@ -132,14 +132,29 @@ footer p {
     height: 30px;
 }
 
+#loginForm .formButtons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
 #loginForm #botoia {
     margin: 30px 0px;
-    align-self: center;
     background-color: orange;
     color: white;
     height: 30px;
     width: 80px;
 }
+
+#loginForm #botoia2 {
+    margin: 30px 0px;
+    background-color: rgba(36, 35, 35, 0.774);
+    color: white;
+    height: 30px;
+    width: 80px;
+}
+
+
 
 .errorForm {
     margin-bottom: 20px;

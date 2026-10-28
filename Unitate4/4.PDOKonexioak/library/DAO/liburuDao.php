@@ -10,10 +10,13 @@ function selectLiburuak($pdo)
 }
 
 
-function insertLiburu(PDO $pdo, $liburua)
+function insertLiburu(PDO $pdo, $izenburua, $egilea, $eskuragarri)
 {
-    $valor = "Hasierako balioa";
-    $stmt = $pdo->prepare("INSERT INTO liburuak (columna) VALUES (:liburua)");
-    $stmt->bindValue(':liburua', $liburua);
-    $stmt->execute();
+  $stmt = $pdo->prepare("INSERT INTO liburuak (titulua, autorea, eskuragarri) VALUES (:izenburua, :egilea, :eskuragarri)");
+    $liburua = [
+        ':izenburua' => $izenburua,
+        ':egilea' => $egilea,
+        ':eskuragarri' => $eskuragarri,
+    ];
+$stmt->execute($liburua);
 }
